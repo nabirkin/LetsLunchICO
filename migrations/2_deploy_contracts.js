@@ -1,5 +1,5 @@
-var MyContract = artifacts.require("./MyContract.sol");
+var LetsLunchToken = artifacts.require("./LetsLunchToken.sol");
 
 module.exports = function(deployer) {
-    deployer.deploy(MyContract);
+    deployer.deploy(LetsLunchToken);
 };
