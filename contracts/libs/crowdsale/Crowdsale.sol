@@ -90,7 +90,7 @@ contract Crowdsale {
 
   // calculate bonus tokens
   // override to create custom calculation mechanisms
-  function calculateBonusTokens(uint256 base) internal constant returns (uint256) {
+  function calculateBonusTokens(uint256) internal constant returns (uint256) {
     return 0;
   }
 
