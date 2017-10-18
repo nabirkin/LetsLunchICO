@@ -73,7 +73,11 @@ contract Crowdsale {
     uint256 weiAmount = msg.value;
 
     // calculate token amount to be created
-    uint256 tokens = weiAmount.mul(rate);
+    uint256 tokens = weiAmount.mul(rate).div(1 ether);
+
+    // add bonus tokens
+    uint256 bonusTokens = calculateBonusTokens(tokens);
+    tokens += bonusTokens;
 
     // update state
     weiRaised = weiRaised.add(weiAmount);
@@ -82,6 +86,12 @@ contract Crowdsale {
     TokenPurchase(msg.sender, beneficiary, weiAmount, tokens);
 
     forwardFunds();
+  }
+
+  // calculate bonus tokens
+  // override to create custom calculation mechanisms
+  function calculateBonusTokens(uint256 base) internal constant returns (uint256) {
+    return 0;
   }
 
   // send ether to the fund collection wallet
