@@ -7,6 +7,12 @@ import "./libs/lifecycle/Pausable.sol";
 
 contract LetsLunchPresale is CappedCrowdsale, RefundableCrowdsale, Pausable {
 
+    // Addresses that are allowed to have extra bonus. For testing, for ICO partners, etc.
+    mapping (address => bool) public earlyParticipantWhitelist;
+
+    // Address early participation whitelist status changed
+    event Whitelisted(address addr, bool status);
+
     function LetsLunchPresale(
         uint256 _startTime,
         uint256 _period,
@@ -50,5 +56,11 @@ contract LetsLunchPresale is CappedCrowdsale, RefundableCrowdsale, Pausable {
         } else if(now >= startTime + (period * 1 days).div(4).mul(2) && now < startTime + (period * 1 days).div(4).mul(3)) {
             bonusTokens = base.div(20);
         }
+    }
+
+    // allow addresses to do early participation
+    function setEarlyParticipantWhitelist(address investor, bool status) onlyOwner {
+        earlyParticipantWhitelist[investor] = status;
+        Whitelisted(investor, status);
     }
 }
