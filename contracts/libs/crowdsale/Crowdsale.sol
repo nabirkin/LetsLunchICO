@@ -77,7 +77,7 @@ contract Crowdsale {
 
     // add bonus tokens
     uint256 bonusTokens = calculateBonusTokens(tokens);
-    tokens += bonusTokens;
+    tokens = tokens.add(bonusTokens);
 
     // update state
     weiRaised = weiRaised.add(weiAmount);

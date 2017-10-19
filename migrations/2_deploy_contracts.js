@@ -1,5 +1,5 @@
 var LetsLunchToken = artifacts.require("./LetsLunchToken.sol");
-var LetsLunchPresale = artifacts.require("./LetsLunchPresale.sol");
+var LetsLunchPrePresale = artifacts.require("./LetsLunchPrePresale.sol");
 
 module.exports = function(deployer) {
 
@@ -7,10 +7,11 @@ module.exports = function(deployer) {
     var period = 10;
     var multisig = web3.eth.accounts[0];
     var rate = 1000;
-    var sofcap = 750;
     var hardcap = 15000;
+    var restrictedWallet = web3.eth.accounts[1];
+    var restrictedPercent = 50;
 
     deployer.deploy(LetsLunchToken).then(function() {
-        deployer.deploy(LetsLunchPresale, startAt, period, rate, sofcap, hardcap, LetsLunchToken.address, multisig);
+        deployer.deploy(LetsLunchPrePresale, startAt, period, rate, hardcap, LetsLunchToken.address, multisig, restrictedWallet, restrictedPercent);
     });
 };

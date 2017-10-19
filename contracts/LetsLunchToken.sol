@@ -4,7 +4,13 @@ import './libs/token/MintableToken.sol';
 
 contract LetsLunchToken is MintableToken {
 
-  string public symbol = "LLT";
-  string public name = "LetsLunch Token";
-  uint public decimals = 18;
+  // Metadata
+  string public constant symbol = "LLT";
+  string public constant name = "LetsLunch Token";
+  uint8 public constant decimals = 18;
+  string public constant version = "1.0";
+
+
+
+
 }
