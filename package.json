@@ -1,0 +1,29 @@
+{
+  "name": "letslunch",
+  "version": "1.0.0",
+  "description": "LetsLunch token and crowdsale contracts",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabirkin/LetsLunchICO.git"
+  },
+  "keywords": [
+    "ICO",
+    "LetsLunch"
+  ],
+  "author": "LetsLunch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nabirkin/LetsLunchICO/issues"
+  },
+  "homepage": "https://github.com/nabirkin/LetsLunchICO#readme",
+  "devDependencies": {
+    "@digix/tempo": "^0.2.0"
+  }
+}
