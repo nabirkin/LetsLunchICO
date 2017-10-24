@@ -7,11 +7,12 @@ module.exports = function(deployer) {
     var period = 10;
     var multisig = web3.eth.accounts[0];
     var rate = 1000;
-    var hardcap = 15000;
-    var restrictedWallet = web3.eth.accounts[1];
-    var restrictedPercent = 50;
+    var hardcap = 1500;
+    var minPaymentLimit = 10;
+    // var restrictedWallet = web3.eth.accounts[1];
+    // var restrictedPercent = 50;
 
     deployer.deploy(LetsLunchToken).then(function() {
-        deployer.deploy(LetsLunchPrePresale, startAt, period, rate, hardcap, LetsLunchToken.address, multisig, restrictedWallet, restrictedPercent);
+        deployer.deploy(LetsLunchPrePresale, startAt, period, rate, hardcap, minPaymentLimit, LetsLunchToken.address, multisig);
     });
 };

@@ -1,5 +1,7 @@
 var LetsLunchToken = artifacts.require("./LetsLunchToken.sol");
 
+const assertJump = require('./helpers/assertJump');
+
 contract('LetsLunchToken', function(accounts) {
 
     before(async function() {
@@ -30,7 +32,7 @@ contract('LetsLunchToken', function(accounts) {
             assert.fail('should have thrown before');
 
         } catch ( error ) {
-            assert.isAbove(error.message.search('invalid opcode'), -2, 'Invalid opcode must be returned');
+            assertJump(error);
         }
 
         const endBalance = await this.token.balanceOf(accounts[1]);
