@@ -109,6 +109,27 @@ contract('LetsLunchPrePresale', function(accounts) {
             await wait(hours * 1.5, 1);
         });
 
+        it('should not allow investors to invest less then min payment limit', async function() {
+
+            let walletBalance1 = await web3.eth.getBalance(this.wallet);
+
+            try {
+                await this.presale.sendTransaction({
+                    value: web3.toWei( 9, "ether"),
+                    from: this.investor
+                });
+
+                assert.fail('should have thrown');
+
+            } catch ( error ) {
+                assertJump(error);
+            }
+
+            let walletBalance2 = await web3.eth.getBalance(this.wallet);
+
+            assert.equal( walletBalance1.valueOf(), walletBalance2.valueOf(), "Start and end contracts balances are not equal" );
+        });
+
         it('Should send tokens to investor with discount 40%', async function() {
             let walletBalance1 = await web3.eth.getBalance(this.wallet);
             let investorBalance1 = await web3.eth.getBalance(this.investor);
